@@ -304,6 +304,47 @@
   color: var(--muted);
   line-height: 1.8;
 }
+
+/* =============================================
+   RESERVATIONS — RESPONSIVE
+   ============================================= */
+
+@media (max-width: 1024px) {
+  .reservation-section { padding: 100px 40px; }
+  .res-form { grid-template-columns: 1fr; gap: 14px; }
+  .form-group.full { grid-column: span 1; }
+  .reservation-info { padding: 100px 40px; }
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    max-width: 540px;
+    margin: 80px auto 0;
+  }
+  .contact-section { padding: 100px 40px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 60px; }
+  .contact-right { padding: 48px 40px; }
+  .policies-section { padding: 100px 40px; }
+  .policies-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+
+@media (max-width: 768px) {
+  .reservation-section { padding: 70px 24px; }
+  .reservation-inner .section-title { font-size: clamp(2.4rem, 10vw, 3.5rem); }
+  .reservation-subtitle { margin-bottom: 40px; font-size: 0.85rem; }
+  .reservation-info { padding: 70px 24px; }
+  .info-grid { max-width: 100%; margin-top: 48px; }
+  .contact-section { padding: 70px 24px; }
+  .contact-right { padding: 28px 20px; }
+  .policies-section { padding: 70px 24px; }
+  .policy-card { padding: 28px 24px; }
+}
+
+@media (max-width: 480px) {
+  .reservation-section { padding: 60px 20px; }
+  .reservation-info { padding: 60px 20px; }
+  .contact-section { padding: 60px 20px; }
+  .policies-section { padding: 60px 20px; }
+}
 </style>
 </head>
 <body>
@@ -326,6 +367,11 @@
     <li><a href="reservations.html">Reservations</a></li>
   </ul>
   <a href="reservations.html" class="nav-cta">Book a Table</a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
 <!-- PAGE HEADER -->

@@ -235,6 +235,64 @@
   color: var(--muted);
   line-height: 1.7;
 }
+
+/* =============================================
+   STORY — RESPONSIVE
+   ============================================= */
+
+@media (max-width: 1024px) {
+  .story-section {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    padding: 100px 40px;
+  }
+  .story-right { padding-left: 0; }
+  .story-img-main { height: 500px; }
+  .story-img-accent {
+    width: 160px;
+    height: 160px;
+    right: -20px;
+    bottom: -30px;
+  }
+  .chef-section {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    padding: 100px 40px;
+  }
+  .chef-img { height: 420px; }
+  .values-section { padding: 100px 40px; }
+  .values-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; }
+  .timeline-section { padding: 100px 40px; }
+}
+
+@media (max-width: 768px) {
+  .story-section { padding: 70px 24px; gap: 48px; }
+  .story-img-main { height: 380px; }
+  .story-img-accent { display: none; }
+  .story-gold-bar { left: -10px; height: 140px; }
+  .chef-section { padding: 70px 24px; gap: 40px; }
+  .chef-img { height: 300px; }
+  .values-section { padding: 70px 24px; }
+  .values-grid { grid-template-columns: 1fr; gap: 40px; margin-top: 48px; }
+  .timeline-section { padding: 70px 24px; }
+  /* Linearise timeline to left-aligned */
+  .timeline::before { left: 12px; transform: none; }
+  .timeline-dot { left: 12px; transform: none; }
+  .timeline-item:nth-child(odd) .timeline-content,
+  .timeline-item:nth-child(even) .timeline-content {
+    margin-left: 44px;
+    margin-right: 0;
+    text-align: left;
+  }
+}
+
+@media (max-width: 480px) {
+  .story-section { padding: 60px 20px; }
+  .story-img-main { height: 300px; }
+  .chef-section { padding: 60px 20px; }
+  .values-section { padding: 60px 20px; }
+  .timeline-section { padding: 60px 20px; }
+}
 </style>
 </head>
 <body>
@@ -257,6 +315,11 @@
     <li><a href="reservations.html">Reservations</a></li>
   </ul>
   <a href="reservations.html" class="nav-cta">Book a Table</a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
 <!-- PAGE HEADER -->

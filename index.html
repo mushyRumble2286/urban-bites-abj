@@ -257,6 +257,65 @@
   justify-content: center;
   flex-wrap: wrap;
 }
+
+/* =============================================
+   INDEX — RESPONSIVE
+   ============================================= */
+
+@media (max-width: 1024px) {
+  .hero {
+    grid-template-columns: 1fr;
+    position: relative;
+  }
+  .hero-left {
+    min-height: 100vh;
+    padding: 140px 40px 80px;
+    z-index: 2;
+  }
+  .hero-right {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero-img-wrap { clip-path: none; }
+  .hero-img-overlay {
+    background: linear-gradient(135deg, rgba(14,12,10,0.82) 0%, rgba(14,12,10,0.5) 100%);
+  }
+  .hero-badge { display: none; }
+  .scroll-indicator { left: 40px; }
+  .about-strip {
+    padding: 24px 40px;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  .strip-divider { display: none; }
+  .strip-item { flex: 1 1 calc(50% - 20px); }
+  .home-section { padding: 100px 40px; }
+  .home-cta-section { padding: 80px 40px; }
+  .feat-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+
+@media (max-width: 768px) {
+  .hero-left { padding: 110px 24px 70px; }
+  .hero-desc { max-width: 100%; }
+  .hero-img-overlay { background: rgba(14,12,10,0.72); }
+  .hero-actions { flex-direction: column; align-items: flex-start; gap: 20px; }
+  .scroll-indicator { left: 24px; bottom: 24px; }
+  .about-strip { padding: 20px 24px; gap: 12px; }
+  .strip-item { flex: 1 1 calc(50% - 12px); }
+  .strip-num { font-size: 1.6rem; }
+  .home-section { padding: 70px 24px; }
+  .home-section-title { margin-bottom: 48px; }
+  .home-cta-section { padding: 70px 24px; }
+  .home-cta-buttons { flex-direction: column; align-items: center; }
+  .feat-grid { grid-template-columns: 1fr !important; }
+}
+
+@media (max-width: 480px) {
+  .strip-item { flex: 1 1 100%; }
+  .hero-left { padding: 100px 20px 60px; }
+  .about-strip { padding: 16px 20px; }
+}
 </style>
 </head>
 <body>
@@ -279,6 +338,11 @@
     <li><a href="reservations.html">Reservations</a></li>
   </ul>
   <a href="reservations.html" class="nav-cta">Book a Table</a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
 <!-- HERO -->
@@ -368,7 +432,7 @@
     <div class="section-tag">Signature Dishes</div>
     <h2 class="section-title">The Urban Bites<br>Collection</h2>
   </div>
-  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;">
+  <div class="feat-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;">
     <div class="menu-card reveal" style="background: var(--charcoal); overflow: hidden; position: relative; cursor: none;">
       <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=280&fit=crop" alt="Abacha Terrine" style="width:100%; height:280px; object-fit:cover; display:block;">
       <div style="padding: 28px; border-top: 1px solid rgba(255,255,255,0.05);">

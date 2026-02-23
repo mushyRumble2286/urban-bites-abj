@@ -68,3 +68,20 @@ function setActiveNav() {
   });
 }
 setActiveNav();
+
+// Hamburger menu toggle
+const navHamburger = document.getElementById('navHamburger');
+if (navHamburger) {
+  const navbar = document.getElementById('navbar');
+  navHamburger.addEventListener('click', () => {
+    navbar.classList.toggle('nav-open');
+    document.body.style.overflow = navbar.classList.contains('nav-open') ? 'hidden' : '';
+  });
+  // Close on nav link or CTA click
+  document.querySelectorAll('.nav-links a, .nav-cta').forEach(el => {
+    el.addEventListener('click', () => {
+      navbar.classList.remove('nav-open');
+      document.body.style.overflow = '';
+    });
+  });
+}

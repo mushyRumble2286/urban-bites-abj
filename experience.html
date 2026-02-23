@@ -240,6 +240,60 @@
   color: var(--muted);
   line-height: 1.7;
 }
+
+/* =============================================
+   EXPERIENCE — RESPONSIVE
+   ============================================= */
+
+@media (max-width: 1024px) {
+  .experience-section {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    padding: 100px 40px;
+  }
+  .experience-right {
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+  }
+  .exp-img.tall { grid-row: span 1; height: 240px; aspect-ratio: auto; }
+  .exp-img:not(.tall) { height: 240px; }
+  .dining-experiences { padding: 100px 40px; }
+  .experiences-grid { grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 60px; }
+  .testimonials-section { padding: 100px 40px; }
+  .testi-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+  }
+  .amenities-section { padding: 100px 40px; }
+  .amenities-grid { grid-template-columns: repeat(2, 1fr); gap: 40px; margin-top: 60px; }
+}
+
+@media (max-width: 768px) {
+  .experience-section { padding: 70px 24px; }
+  .experience-right { grid-template-columns: 1fr; }
+  .exp-img.tall { height: 280px; }
+  .exp-img:not(.tall) { display: none; }
+  .dining-experiences { padding: 70px 24px; }
+  .experiences-grid { grid-template-columns: 1fr; }
+  .experience-card-body { padding: 28px 24px; }
+  .testimonials-section { padding: 70px 24px; }
+  .testi-grid { max-width: 100%; }
+  .testi-card { padding: 36px 28px; }
+  .amenities-section { padding: 70px 24px; }
+  .amenities-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+}
+
+@media (max-width: 480px) {
+  .experience-section { padding: 60px 20px; }
+  .dining-experiences { padding: 60px 20px; }
+  .testimonials-section { padding: 60px 20px; }
+  .amenities-section { padding: 60px 20px; }
+  .amenities-grid { grid-template-columns: 1fr; }
+}
 </style>
 </head>
 <body>
@@ -262,6 +316,11 @@
     <li><a href="reservations.html">Reservations</a></li>
   </ul>
   <a href="reservations.html" class="nav-cta">Book a Table</a>
+  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
 
 <!-- PAGE HEADER -->
