@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Experience - Urban Bites Abuja</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Google+Sans:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* EXPERIENCE SECTION */
+.experience-section {
+  padding: 140px 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+
+.experience-left .section-title { margin-bottom: 40px; }
+
+.experience-desc {
+  font-size: 0.95rem;
+  line-height: 1.9;
+  color: var(--muted);
+  margin-bottom: 60px;
+}
+
+.features-list { list-style: none; }
+
+.feature-item {
+  padding: 28px 0;
+  border-top: 1px solid rgba(201,168,76,0.15);
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.feature-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  color: var(--gold);
+  opacity: 0.4;
+  font-weight: 300;
+  min-width: 40px;
+}
+
+.feature-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.2rem;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+
+.feature-text { font-size: 0.8rem; color: var(--muted); line-height: 1.7; }
+
+.experience-right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.exp-img {
+  width: 100%; aspect-ratio: 3/4;
+  object-fit: cover;
+  display: block;
+}
+
+.exp-img.tall { grid-row: span 2; aspect-ratio: auto; height: 100%; }
+
+/* DINING EXPERIENCES */
+.dining-experiences {
+  background: var(--charcoal);
+  padding: 140px 80px;
+}
+
+.experiences-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 80px;
+}
+
+.experience-card {
+  background: var(--dark);
+  border: 1px solid rgba(201,168,76,0.1);
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.experience-card:hover {
+  border-color: rgba(201,168,76,0.4);
+  transform: translateY(-8px);
+}
+
+.experience-card-img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+}
+
+.experience-card-body {
+  padding: 40px;
+}
+
+.experience-card-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 16px;
+}
+
+.experience-card-desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 24px;
+}
+
+.experience-card-details {
+  list-style: none;
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+.experience-card-details li {
+  padding: 8px 0;
+  border-top: 1px solid rgba(201,168,76,0.1);
+}
+
+.experience-card-details li strong {
+  color: var(--gold);
+  display: block;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+.experience-card-cta {
+  display: inline-block;
+  color: var(--gold);
+  text-decoration: none;
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+.experience-card-cta:hover { color: var(--cream); }
+
+/* TESTIMONIALS */
+.testimonials-section {
+  background: var(--green);
+  padding: 140px 80px;
+  text-align: center;
+}
+
+.testi-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 80px;
+}
+
+.testi-card {
+  background: rgba(0,0,0,0.2);
+  padding: 48px 36px;
+  border: 1px solid rgba(201,168,76,0.1);
+  text-align: left;
+  position: relative;
+  transition: border-color 0.3s;
+}
+
+.testi-card:hover { border-color: rgba(201,168,76,0.4); }
+
+.testi-quote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 6rem;
+  line-height: 0.5;
+  color: var(--gold);
+  opacity: 0.15;
+  position: absolute;
+  top: 30px; left: 30px;
+}
+
+.testi-text {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.15rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--cream);
+  margin-bottom: 32px;
+  position: relative;
+}
+
+.testi-stars { color: var(--gold); letter-spacing: 4px; font-size: 0.75rem; margin-bottom: 16px; }
+
+.testi-author {
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--muted);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.testi-author strong { color: var(--gold); display: block; font-weight: 400; }
+
+/* AMENITIES */
+.amenities-section {
+  padding: 140px 80px;
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+  margin-top: 80px;
+}
+
+.amenity-item {
+  text-align: center;
+}
+
+.amenity-icon {
+  font-size: 3.5rem;
+  margin-bottom: 20px;
+}
+
+.amenity-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 12px;
+}
+
+.amenity-desc {
+  font-size: 0.85rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follow" id="cursorFollow"></div>
+
+<!-- Ambient orbs -->
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Urban<span>Bites</span></a>
+  <ul class="nav-links">
+    <li><a href="story.html">Story</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="reservations.html">Reservations</a></li>
+  </ul>
+  <a href="reservations.html" class="nav-cta">Book a Table</a>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header" style="background: linear-gradient(135deg, rgba(42,61,46,0.8) 0%, rgba(14,12,10,0.8) 100%);">
+  <div class="page-header-content">
+    <div class="section-tag" style="justify-content: center;">The Experience</div>
+    <h1 class="section-title">Dining That<br><em>Moves the Soul</em></h1>
+    <p class="page-header-subtitle">From the moment you step through our doors, time slows. Every element is designed to create an atmosphere wholly, unmistakably Urban Bites.</p>
+  </div>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Home</a> / Experience
+</div>
+
+<!-- MAIN EXPERIENCE SECTION -->
+<section class="experience-section">
+  <div class="experience-left">
+    <div class="section-tag">The Atmosphere</div>
+    <h2 class="section-title reveal">Dining That<br>Moves the Soul</h2>
+    <p class="experience-desc reveal">From the moment you step through our doors, time slows. We've designed every element — architecture, lighting, sound — to create an atmosphere that is wholly, unmistakably Urban Bites.</p>
+    <ul class="features-list">
+      <li class="feature-item reveal">
+        <span class="feature-num">01</span>
+        <div class="feature-content">
+          <div class="feature-title">The Chef's Table</div>
+          <p class="feature-text">An intimate 6-seat experience where Chef Adaeze curates a bespoke tasting menu directly in front of you.</p>
+        </div>
+      </li>
+      <li class="feature-item reveal">
+        <span class="feature-num">02</span>
+        <div class="feature-content">
+          <div class="feature-title">Private Dining</div>
+          <p class="feature-text">Exclusive rooms for celebrations, corporate affairs, and intimate gatherings — fully customizable.</p>
+        </div>
+      </li>
+      <li class="feature-item reveal">
+        <span class="feature-num">03</span>
+        <div class="feature-content">
+          <div class="feature-title">Wine & Spirits</div>
+          <p class="feature-text">A curated cellar of 200+ wines, African craft spirits, and expertly paired cocktail flights.</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="experience-right reveal-right">
+    <img src="https://images.unsplash.com/photo-1504674900152-b8b9e7f3d9b0?w=400&h=600&fit=crop" alt="Restaurant ambiance" class="exp-img tall">
+    <img src="https://images.unsplash.com/photo-1510812431401-41d2cab2707d?w=400&h=300&fit=crop" alt="Wine selection" class="exp-img">
+    <img src="https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=400&h=300&fit=crop" alt="Fine dining setup" class="exp-img">
+  </div>
+</section>
+
+<!-- DINING EXPERIENCES -->
+<section class="dining-experiences" id="chef-table">
+  <div style="text-align: center; margin-bottom: 80px;">
+    <div class="section-tag" style="justify-content: center;">Exclusive Offerings</div>
+    <h2 class="section-title reveal">Dining Experiences</h2>
+  </div>
+  <div class="experiences-grid">
+    <div class="experience-card reveal">
+      <img src="https://images.unsplash.com/photo-1504674900152-b8b9e7f3d9b0?w=400&h=300&fit=crop" alt="Chef's Table" class="experience-card-img">
+      <div class="experience-card-body">
+        <h3 class="experience-card-title">Chef's Table</h3>
+        <p class="experience-card-desc">An intimate 6-seat experience where Chef Adaeze personally curates a bespoke tasting menu. Watch culinary artistry unfold before your eyes.</p>
+        <ul class="experience-card-details">
+          <li><strong>Duration</strong> 3.5 hours</li>
+          <li><strong>Party Size</strong> Up to 6 guests</li>
+          <li><strong>Price</strong> ₦85,000 per person</li>
+          <li><strong>Includes</strong> Wine pairings & welcome cocktail</li>
+        </ul>
+        <a href="reservations.html" class="experience-card-cta">Book Now →</a>
+      </div>
+    </div>
+    <div class="experience-card reveal" style="transition-delay: 0.15s;">
+      <img src="https://images.unsplash.com/photo-1519671482677-504be0ffec60?w=400&h=300&fit=crop" alt="Private Dining" class="experience-card-img">
+      <div class="experience-card-body">
+        <h3 class="experience-card-title">Private Dining</h3>
+        <p class="experience-card-desc">Celebrate your special moments in our exclusive private dining rooms. Fully customizable menus and service for your unique occasion.</p>
+        <ul class="experience-card-details">
+          <li><strong>Capacity</strong> 8–50 guests</li>
+          <li><strong>Customization</strong> Full menu design available</li>
+          <li><strong>Starting Price</strong> ₦45,000 per person</li>
+          <li><strong>Includes</strong> Dedicated server & sommelier</li>
+        </ul>
+        <a href="reservations.html" class="experience-card-cta">Inquire →</a>
+      </div>
+    </div>
+    <div class="experience-card reveal" style="transition-delay: 0.3s;">
+      <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=300&fit=crop" alt="Tasting Menu" class="experience-card-img">
+      <div class="experience-card-body">
+        <h3 class="experience-card-title">Tasting Menu</h3>
+        <p class="experience-card-desc">A curated 7-course journey through our signature dishes. Each course tells a story of West African culinary excellence.</p>
+        <ul class="experience-card-details">
+          <li><strong>Duration</strong> 2.5 hours</li>
+          <li><strong>Courses</strong> 7 courses</li>
+          <li><strong>Price</strong> ₦65,000 per person</li>
+          <li><strong>Includes</strong> Wine or spirit pairings</li>
+        </ul>
+        <a href="reservations.html" class="experience-card-cta">Reserve →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials-section">
+  <div style="text-align: center; margin-bottom: 80px;">
+    <div class="section-tag" style="justify-content: center;">Guest Stories</div>
+    <h2 class="section-title reveal">Voices of Our Guests</h2>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <span class="testi-quote-mark">"</span>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">The most extraordinary dining experience I've had on this continent. The Jollof Risotto alone is worth the trip from Lagos.</p>
+      <div class="testi-author"><strong>Chioma Eze</strong>Food Critic, Lagos Eats</div>
+    </div>
+    <div class="testi-card reveal" style="transition-delay:0.15s">
+      <span class="testi-quote-mark">"</span>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">Urban Bites isn't a restaurant — it's a performance. Chef Adaeze transforms Nigerian food into an art form I've never experienced before.</p>
+      <div class="testi-author"><strong>Emeka Okafor</strong>Lifestyle Editor, ThisDay</div>
+    </div>
+    <div class="testi-card reveal" style="transition-delay:0.3s">
+      <span class="testi-quote-mark">"</span>
+      <div class="testi-stars">★★★★★</div>
+      <p class="testi-text">I took international clients here and they were completely speechless. We've been back four times this year alone.</p>
+      <div class="testi-author"><strong>Amina Bello</strong>CEO, Meridian Capital</div>
+    </div>
+  </div>
+</section>
+
+<!-- AMENITIES -->
+<section class="amenities-section" id="private-events">
+  <div style="text-align: center; margin-bottom: 80px;">
+    <div class="section-tag" style="justify-content: center;">Facilities</div>
+    <h2 class="section-title reveal">Restaurant Amenities</h2>
+  </div>
+  <div class="amenities-grid">
+    <div class="amenity-item reveal">
+      <div class="amenity-icon">♪</div>
+      <h3 class="amenity-title">Curated Soundscape</h3>
+      <p class="amenity-desc">Carefully selected music and ambient sounds create the perfect dining atmosphere.</p>
+    </div>
+    <div class="amenity-item reveal" style="transition-delay: 0.15s;">
+      <div class="amenity-icon">◉</div>
+      <h3 class="amenity-title">Ambient Lighting</h3>
+      <p class="amenity-desc">Sophisticated lighting design that evolves throughout your dining experience.</p>
+    </div>
+    <div class="amenity-item reveal" style="transition-delay: 0.3s;">
+      <div class="amenity-icon">◆</div>
+      <h3 class="amenity-title">Valet Parking</h3>
+      <p class="amenity-desc">Complimentary valet parking for all guests. Arrive in style, leave with ease.</p>
+    </div>
+    <div class="amenity-item reveal" style="transition-delay: 0.45s;">
+      <div class="amenity-icon">⚡</div>
+      <h3 class="amenity-title">WiFi & Charging</h3>
+      <p class="amenity-desc">High-speed WiFi and charging stations available throughout the restaurant.</p>
+    </div>
+    <div class="amenity-item reveal" style="transition-delay: 0.6s;">
+      <div class="amenity-icon">◈</div>
+      <h3 class="amenity-title">Gift Cards</h3>
+      <p class="amenity-desc">Perfect for any occasion. Available in custom denominations.</p>
+    </div>
+    <div class="amenity-item reveal" style="transition-delay: 0.75s;">
+      <div class="amenity-icon">◎</div>
+      <h3 class="amenity-title">Photo Opportunities</h3>
+      <p class="amenity-desc">Instagram-worthy moments at every turn. Share your Urban Bites experience.</p>
+    </div>
+    <div class="amenity-item reveal" style="transition-delay: 0.9s;">
+      <div class="amenity-icon">✓</div>
+      <h3 class="amenity-title">Accessibility</h3>
+      <p class="amenity-desc">Fully accessible facilities including wheelchair access and accessible restrooms.</p>
+    </div>
+    <div class="amenity-item reveal" style="transition-delay: 1.05s;">
+      <div class="amenity-icon">◆</div>
+      <h3 class="amenity-title">Culinary Classes</h3>
+      <p class="amenity-desc">Learn from Chef Adaeze in our exclusive cooking classes and workshops.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">Urban<span>Bites</span></div>
+      <p class="footer-tagline">A celebration of West African cuisine elevated through the art of modern gastronomy. Located in the heart of Abuja.</p>
+      <div class="footer-social">
+        <a href="#" class="social-link">ig</a>
+        <a href="#" class="social-link">tw</a>
+        <a href="#" class="social-link">fb</a>
+        <a href="#" class="social-link">yt</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="story.html">Our Story</a></li>
+        <li><a href="menu.html">The Menu</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="experience.html#chef-table">Chef's Table</a></li>
+        <li><a href="experience.html#private-events">Private Events</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Visit Us</div>
+      <ul class="footer-links">
+        <li><a href="#">14 Aminu Kano Crescent</a></li>
+        <li><a href="#">Wuse II, Abuja</a></li>
+        <li><a href="#">FCT, Nigeria</a></li>
+        <li><a href="#" style="margin-top:16px; display:block;">+234 801 234 5678</a></li>
+        <li><a href="#">hello@urbanbites.ng</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Hours</div>
+      <ul class="footer-links">
+        <li><a href="#">Mon–Fri</a></li>
+        <li><a href="#">12 PM — 3 PM (Lunch)</a></li>
+        <li><a href="#">7 PM — 11 PM (Dinner)</a></li>
+        <li><a href="#" style="margin-top:16px; display:block;">Sat–Sun</a></li>
+        <li><a href="#">11 AM — 11 PM</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 <span>Urban Bites Abuja</span>. All rights reserved.</div>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Gift Cards</a>
+    </div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>

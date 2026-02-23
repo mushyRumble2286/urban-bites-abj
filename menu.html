@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menu - Urban Bites Abuja</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Google+Sans:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* MENU SECTION */
+.menu-section { background: var(--charcoal); padding: 140px 80px; }
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 80px;
+}
+
+.menu-tabs {
+  display: flex;
+  gap: 8px;
+}
+
+.tab-btn {
+  padding: 10px 24px;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  cursor: none;
+  border: 1px solid rgba(201,168,76,0.3);
+  background: transparent;
+  color: var(--muted);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  transition: all 0.3s;
+}
+
+.tab-btn.active, .tab-btn:hover {
+  background: var(--gold);
+  color: var(--dark);
+  border-color: var(--gold);
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.menu-card {
+  background: var(--dark);
+  overflow: hidden;
+  position: relative;
+  cursor: none;
+}
+
+.menu-card-img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: block;
+}
+
+.menu-card:hover .menu-card-img { transform: scale(1.06); }
+
+.menu-card-body {
+  padding: 28px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.menu-card-category {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.menu-card-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+
+.menu-card-desc {
+  font-size: 0.8rem;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.menu-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-price {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  color: var(--gold);
+}
+
+.menu-price span {
+  font-size: 0.7rem;
+  color: var(--muted);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 400;
+}
+
+.menu-add {
+  width: 36px; height: 36px;
+  border: 1px solid rgba(201,168,76,0.3);
+  background: transparent;
+  color: var(--gold);
+  font-size: 1.2rem;
+  cursor: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+}
+
+.menu-add:hover { background: var(--gold); color: var(--dark); }
+
+/* MENU CATEGORIES */
+.menu-category-section {
+  margin-bottom: 120px;
+}
+
+.menu-category-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 60px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(201,168,76,0.2);
+}
+
+.menu-items-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+/* WINE PAIRING */
+.wine-section {
+  background: var(--green);
+  padding: 140px 80px;
+}
+
+.wine-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.wine-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+}
+
+.wine-card {
+  background: rgba(0,0,0,0.2);
+  padding: 48px;
+  border: 1px solid rgba(201,168,76,0.1);
+  transition: border-color 0.3s;
+}
+
+.wine-card:hover { border-color: rgba(201,168,76,0.4); }
+
+.wine-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 16px;
+}
+
+.wine-desc {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+
+.wine-pairing {
+  font-size: 0.8rem;
+  color: var(--gold);
+  font-style: italic;
+}
+
+/* DIETARY INFO */
+.dietary-section {
+  padding: 140px 80px;
+  background: var(--charcoal);
+}
+
+.dietary-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.dietary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 40px;
+}
+
+.dietary-item {
+  text-align: center;
+}
+
+.dietary-icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.dietary-label {
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.dietary-desc {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-top: 8px;
+  line-height: 1.6;
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follow" id="cursorFollow"></div>
+
+<!-- Ambient orbs -->
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Urban<span>Bites</span></a>
+  <ul class="nav-links">
+    <li><a href="story.html">Story</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="reservations.html">Reservations</a></li>
+  </ul>
+  <a href="reservations.html" class="nav-cta">Book a Table</a>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header" style="background: linear-gradient(135deg, rgba(42,61,46,0.8) 0%, rgba(14,12,10,0.8) 100%);">
+  <div class="page-header-content">
+    <div class="section-tag" style="justify-content: center;">Culinary Excellence</div>
+    <h1 class="section-title">The Urban Bites<br><em>Collection</em></h1>
+    <p class="page-header-subtitle">A carefully curated selection of signature dishes celebrating West African flavors with contemporary techniques.</p>
+  </div>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Home</a> / Menu
+</div>
+
+<!-- MENU SECTION -->
+<div class="menu-section">
+  <div class="menu-header reveal">
+    <div>
+      <div class="section-tag">Signature Dishes</div>
+      <h2 class="section-title">Browse Our Menu</h2>
+    </div>
+    <div class="menu-tabs">
+      <button class="tab-btn active" onclick="filterMenu(this, 'all')">All</button>
+      <button class="tab-btn" onclick="filterMenu(this, 'starters')">Starters</button>
+      <button class="tab-btn" onclick="filterMenu(this, 'mains')">Mains</button>
+      <button class="tab-btn" onclick="filterMenu(this, 'desserts')">Desserts</button>
+    </div>
+  </div>
+  <div class="menu-grid reveal">
+    <div class="menu-card" data-category="starters">
+      <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=280&fit=crop" alt="Abacha Terrine" class="menu-card-img">
+      <div class="menu-card-body">
+        <div class="menu-card-category">Starter</div>
+        <div class="menu-card-name">Abacha Terrine</div>
+        <p class="menu-card-desc">African salad reimagined — layered cassava flakes, ugba, palm oil gel, and garden egg caviar.</p>
+        <div class="menu-card-footer">
+          <div class="menu-price">₦18,500 <span>per person</span></div>
+          <button class="menu-add">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card" data-category="mains">
+      <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=280&fit=crop" alt="Urban Egusi" class="menu-card-img">
+      <div class="menu-card-body">
+        <div class="menu-card-category">Main Course</div>
+        <div class="menu-card-name">Urban Egusi</div>
+        <p class="menu-card-desc">Slow-rendered egusi soup crowned with dry-aged goat, pumpkin leaf oil, and fermented dawadawa dust.</p>
+        <div class="menu-card-footer">
+          <div class="menu-price">₦34,000 <span>per person</span></div>
+          <button class="menu-add">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card" data-category="desserts">
+      <img src="https://images.unsplash.com/photo-1488477181946-6428a0291840?w=400&h=280&fit=crop" alt="Zobo Panna Cotta" class="menu-card-img">
+      <div class="menu-card-body">
+        <div class="menu-card-category">Dessert</div>
+        <div class="menu-card-name">Zobo Panna Cotta</div>
+        <p class="menu-card-desc">Silken hibiscus-infused cream, ginger syrup sphere, and toasted zobo granita.</p>
+        <div class="menu-card-footer">
+          <div class="menu-price">₦12,000 <span>per person</span></div>
+          <button class="menu-add">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card" data-category="starters">
+      <img src="https://images.unsplash.com/photo-1555939594-58d7cb561404?w=400&h=280&fit=crop" alt="Suya Bites" class="menu-card-img">
+      <div class="menu-card-body">
+        <div class="menu-card-category">Starter</div>
+        <div class="menu-card-name">Suya Bites</div>
+        <p class="menu-card-desc">Wagyu skewers dusted in our signature yaji blend, tamarind gel, and shredded onion foam.</p>
+        <div class="menu-card-footer">
+          <div class="menu-price">₦22,000 <span>per person</span></div>
+          <button class="menu-add">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card" data-category="mains">
+      <img src="https://images.unsplash.com/photo-1476124369162-f4978d1a23e2?w=400&h=280&fit=crop" alt="Jollof Risotto" class="menu-card-img">
+      <div class="menu-card-body">
+        <div class="menu-card-category">Main Course</div>
+        <div class="menu-card-name">Jollof Risotto</div>
+        <p class="menu-card-desc">The beloved classic elevated — smoked tomato parboiled rice, lobster bisque beurre blanc, micro herbs.</p>
+        <div class="menu-card-footer">
+          <div class="menu-price">₦38,500 <span>per person</span></div>
+          <button class="menu-add">+</button>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card" data-category="desserts">
+      <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=400&h=280&fit=crop" alt="Plantain Brûlée" class="menu-card-img">
+      <div class="menu-card-body">
+        <div class="menu-card-category">Dessert</div>
+        <div class="menu-card-name">Plantain Brûlée</div>
+        <p class="menu-card-desc">Caramelized ripe plantain custard with palm sugar crust, coconut ice cream, and cinnamon dust.</p>
+        <div class="menu-card-footer">
+          <div class="menu-price">₦10,500 <span>per person</span></div>
+          <button class="menu-add">+</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- WINE PAIRING SECTION -->
+<section class="wine-section">
+  <div class="wine-header reveal">
+    <div class="section-tag" style="justify-content: center;">Beverage Selection</div>
+    <h2 class="section-title">Wine & Spirit<br>Pairings</h2>
+  </div>
+  <div class="wine-grid">
+    <div class="wine-card reveal">
+      <h3 class="wine-title">Curated Wine Selection</h3>
+      <p class="wine-desc">Our sommelier has carefully selected over 200 wines from around the world, with a focus on African and European vintages that complement our menu perfectly.</p>
+      <p class="wine-pairing">Pairings available for all tasting menus</p>
+    </div>
+    <div class="wine-card reveal" style="transition-delay: 0.15s;">
+      <h3 class="wine-title">African Craft Spirits</h3>
+      <p class="wine-desc">Discover premium spirits from across the continent. From Nigerian gin to Ethiopian coffee liqueurs, our collection celebrates African craftsmanship.</p>
+      <p class="wine-pairing">Cocktail flights available daily</p>
+    </div>
+    <div class="wine-card reveal" style="transition-delay: 0.3s;">
+      <h3 class="wine-title">Signature Cocktails</h3>
+      <p class="wine-desc">Our mixologists create bespoke cocktails inspired by our dishes. Each drink is a work of art, crafted with precision and creativity.</p>
+      <p class="wine-pairing">Ask your server for recommendations</p>
+    </div>
+    <div class="wine-card reveal" style="transition-delay: 0.45s;">
+      <h3 class="wine-title">Non-Alcoholic Options</h3>
+      <p class="wine-desc">Sophisticated mocktails and house-made beverages crafted with the same attention to detail as our cocktails. Perfect for any occasion.</p>
+      <p class="wine-pairing">Complimentary with any meal</p>
+    </div>
+  </div>
+</section>
+
+<!-- DIETARY SECTION -->
+<section class="dietary-section">
+  <div class="dietary-header reveal">
+    <div class="section-tag" style="justify-content: center;">Accommodations</div>
+    <h2 class="section-title">Dietary & Allergy<br>Information</h2>
+  </div>
+  <div class="dietary-grid">
+    <div class="dietary-item reveal">
+      <div class="dietary-icon">◆</div>
+      <div class="dietary-label">Vegetarian</div>
+      <p class="dietary-desc">Plant-based options available for all courses. Ask our team for recommendations.</p>
+    </div>
+    <div class="dietary-item reveal" style="transition-delay: 0.15s;">
+      <div class="dietary-icon">✓</div>
+      <div class="dietary-label">Gluten-Free</div>
+      <p class="dietary-desc">We can accommodate gluten-free diets. Please inform us in advance for best preparation.</p>
+    </div>
+    <div class="dietary-item reveal" style="transition-delay: 0.3s;">
+      <div class="dietary-icon">⚠</div>
+      <div class="dietary-label">Allergies</div>
+      <p class="dietary-desc">We take allergies seriously. Please inform your server of any dietary restrictions.</p>
+    </div>
+    <div class="dietary-item reveal" style="transition-delay: 0.45s;">
+      <div class="dietary-icon">✦</div>
+      <div class="dietary-label">Custom Menus</div>
+      <p class="dietary-desc">Special requests welcome. Contact us in advance for personalized menu creation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">Urban<span>Bites</span></div>
+      <p class="footer-tagline">A celebration of West African cuisine elevated through the art of modern gastronomy. Located in the heart of Abuja.</p>
+      <div class="footer-social">
+        <a href="#" class="social-link">ig</a>
+        <a href="#" class="social-link">tw</a>
+        <a href="#" class="social-link">fb</a>
+        <a href="#" class="social-link">yt</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="story.html">Our Story</a></li>
+        <li><a href="menu.html">The Menu</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="experience.html#chef-table">Chef's Table</a></li>
+        <li><a href="experience.html#private-events">Private Events</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Visit Us</div>
+      <ul class="footer-links">
+        <li><a href="#">14 Aminu Kano Crescent</a></li>
+        <li><a href="#">Wuse II, Abuja</a></li>
+        <li><a href="#">FCT, Nigeria</a></li>
+        <li><a href="#" style="margin-top:16px; display:block;">+234 801 234 5678</a></li>
+        <li><a href="#">hello@urbanbites.ng</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Hours</div>
+      <ul class="footer-links">
+        <li><a href="#">Mon–Fri</a></li>
+        <li><a href="#">12 PM — 3 PM (Lunch)</a></li>
+        <li><a href="#">7 PM — 11 PM (Dinner)</a></li>
+        <li><a href="#" style="margin-top:16px; display:block;">Sat–Sun</a></li>
+        <li><a href="#">11 AM — 11 PM</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 <span>Urban Bites Abuja</span>. All rights reserved.</div>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Gift Cards</a>
+    </div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+// Menu filter
+function filterMenu(btn, cat) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.menu-card').forEach(card => {
+    if (cat === 'all' || card.dataset.category === cat) {
+      card.style.display = '';
+      card.style.animation = 'fadeUp 0.5s ease forwards';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+
+// Menu add button pulse
+document.querySelectorAll('.menu-add').forEach(btn => {
+  btn.addEventListener('click', function() {
+    this.textContent = '✓';
+    this.style.background = 'var(--gold)';
+    this.style.color = 'var(--dark)';
+    setTimeout(() => {
+      this.textContent = '+';
+      this.style.background = '';
+      this.style.color = '';
+    }, 1200);
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story - Urban Bites Abuja</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Google+Sans:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* STORY SECTION */
+.story-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+  padding: 140px 80px;
+}
+.story-left { position: relative; }
+.story-img-main {
+  width: 100%;
+  height: 600px;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: 1;
+}
+.story-img-accent {
+  position: absolute;
+  bottom: -50px;
+  right: -50px;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border: 6px solid var(--dark);
+  z-index: 2;
+}
+.story-gold-bar {
+  position: absolute;
+  top: 40px;
+  left: -20px;
+  width: 6px;
+  height: 200px;
+  background: var(--gold);
+  z-index: 3;
+}
+
+.story-right { padding-left: 20px; }
+.story-desc {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--muted);
+  margin-bottom: 28px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.story-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cream);
+  border-left: 2px solid var(--gold);
+  padding-left: 28px;
+  margin: 40px 0;
+  line-height: 1.4;
+}
+.story-sign {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-style: italic;
+  color: var(--gold);
+  margin-top: 40px;
+}
+
+/* CHEF SECTION */
+.chef-section {
+  background: var(--charcoal);
+  padding: 140px 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: center;
+}
+
+.chef-img {
+  width: 100%;
+  height: 500px;
+  object-fit: cover;
+  display: block;
+}
+
+.chef-content .section-tag {
+  margin-bottom: 20px;
+}
+
+.chef-content .section-title {
+  margin-bottom: 40px;
+}
+
+.chef-bio {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--muted);
+  margin-bottom: 28px;
+}
+
+.chef-credentials {
+  list-style: none;
+  margin-top: 40px;
+}
+
+.chef-credentials li {
+  padding: 16px 0;
+  border-top: 1px solid rgba(201,168,76,0.15);
+  font-size: 0.9rem;
+  color: var(--cream);
+}
+
+.chef-credentials li strong {
+  color: var(--gold);
+  display: block;
+  font-weight: 400;
+  margin-bottom: 4px;
+}
+
+/* VALUES SECTION */
+.values-section {
+  padding: 140px 80px;
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+  margin-top: 80px;
+}
+
+.value-card {
+  text-align: center;
+}
+
+.value-icon {
+  font-size: 4rem;
+  margin-bottom: 24px;
+}
+
+.value-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 16px;
+}
+
+.value-text {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* TIMELINE SECTION */
+.timeline-section {
+  background: var(--charcoal);
+  padding: 140px 80px;
+}
+
+.timeline-header {
+  text-align: center;
+  margin-bottom: 100px;
+}
+
+.timeline {
+  position: relative;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: rgba(201,168,76,0.2);
+}
+
+.timeline-item {
+  margin-bottom: 60px;
+  position: relative;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+  margin-left: 0;
+  margin-right: 52%;
+  text-align: right;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+  margin-left: 52%;
+  margin-right: 0;
+  text-align: left;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 16px;
+  background: var(--gold);
+  border: 3px solid var(--dark);
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.timeline-year {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem;
+  font-weight: 300;
+  color: var(--gold);
+  margin-bottom: 8px;
+}
+
+.timeline-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.3rem;
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 12px;
+}
+
+.timeline-desc {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.7;
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follow" id="cursorFollow"></div>
+
+<!-- Ambient orbs -->
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Urban<span>Bites</span></a>
+  <ul class="nav-links">
+    <li><a href="story.html">Story</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="reservations.html">Reservations</a></li>
+  </ul>
+  <a href="reservations.html" class="nav-cta">Book a Table</a>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header" style="background: linear-gradient(135deg, rgba(42,61,46,0.8) 0%, rgba(14,12,10,0.8) 100%);">
+  <div class="page-header-content">
+    <div class="section-tag" style="justify-content: center;">Our Heritage</div>
+    <h1 class="section-title">Born From<br>Abuja's Heartbeat</h1>
+    <p class="page-header-subtitle">A bold vision to honor West African culinary traditions while embracing the future of fine dining.</p>
+  </div>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Home</a> / Our Story
+</div>
+
+<!-- STORY SECTION -->
+<section class="story-section">
+  <div class="story-left reveal-left">
+    <div class="story-gold-bar"></div>
+    <img src="https://images.unsplash.com/photo-1495521821757-a1efb6729352?w=500&h=600&fit=crop" alt="Restaurant interior" class="story-img-main">
+    <img src="https://images.unsplash.com/photo-1504674900152-b8b9e7f3d9b0?w=200&h=200&fit=crop" alt="Fresh ingredients" class="story-img-accent">
+  </div>
+  <div class="story-right reveal-right">
+    <div class="section-tag">Our Foundation</div>
+    <h2 class="section-title">A Vision Born<br>in 2019</h2>
+    <div class="gold-line"></div>
+    <p class="story-desc">Urban Bites began as a bold idea — what if Nigeria's rich culinary heritage could meet the precision of modern gastronomy? Founded in the heart of Abuja, we set out to honor the traditions of our grandmothers while embracing the future of food.</p>
+    <p class="story-desc">Every dish tells a story. Every ingredient is sourced from trusted local farmers. Every plate is a love letter to the city that inspires us every single day.</p>
+    <blockquote class="story-quote">
+      "Food is not just sustenance — it is memory, culture, and connection on a plate."
+    </blockquote>
+    <p style="font-size:0.75rem; letter-spacing:0.2em; text-transform:uppercase; color:var(--muted);">Chef Adaeze Nwosu</p>
+    <p class="story-sign">Urban Bites</p>
+  </div>
+</section>
+
+<!-- CHEF SECTION -->
+<section class="chef-section">
+  <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=500&fit=crop" alt="Chef Adaeze Nwosu" class="chef-img">
+  <div class="chef-content reveal-right">
+    <div class="section-tag">Meet the Visionary</div>
+    <h2 class="section-title">Chef Adaeze<br>Nwosu</h2>
+    <div class="gold-line"></div>
+    <p class="chef-bio">Chef Adaeze Nwosu is a culinary innovator with over 15 years of experience in fine dining across Africa and Europe. Her approach to West African cuisine is rooted in respect for tradition while pushing the boundaries of contemporary gastronomy.</p>
+    <p class="chef-bio">Trained under Michelin-starred chefs in Paris and Copenhagen, Adaeze returned to Nigeria with a mission: to elevate African cuisine to the world stage while celebrating the flavors of her homeland.</p>
+    <ul class="chef-credentials">
+      <li><strong>Culinary Training</strong> Le Cordon Bleu, Paris & Noma, Copenhagen</li>
+      <li><strong>Awards</strong> Best New Restaurant 2020, African Culinary Excellence 2022</li>
+      <li><strong>Philosophy</strong> Tradition meets innovation, local ingredients, global techniques</li>
+      <li><strong>Passion</strong> Storytelling through food, community, and cultural preservation</li>
+    </ul>
+  </div>
+</section>
+
+<!-- VALUES SECTION -->
+<section class="values-section">
+  <div style="text-align: center; margin-bottom: 80px;">
+    <div class="section-tag" style="justify-content: center;">Our Principles</div>
+    <h2 class="section-title">What Drives Us</h2>
+  </div>
+  <div class="values-grid">
+    <div class="value-card reveal">
+      <div class="value-icon">♻</div>
+      <h3 class="value-title">Sustainability</h3>
+      <p class="value-text">We partner with local farmers and suppliers, ensuring every ingredient is sourced responsibly and supports our community.</p>
+    </div>
+    <div class="value-card reveal" style="transition-delay: 0.15s;">
+      <div class="value-icon">✦</div>
+      <h3 class="value-title">Artistry</h3>
+      <p class="value-text">Cooking is an art form. Every plate is a canvas where technique, flavor, and presentation come together in perfect harmony.</p>
+    </div>
+    <div class="value-card reveal" style="transition-delay: 0.3s;">
+      <div class="value-icon">◆</div>
+      <h3 class="value-title">Heritage</h3>
+      <p class="value-text">We honor the culinary traditions of West Africa while creating new stories. Our food is a bridge between past and future.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE SECTION -->
+<section class="timeline-section">
+  <div class="timeline-header reveal">
+    <div class="section-tag" style="justify-content: center;">Our Journey</div>
+    <h2 class="section-title">Milestones & Moments</h2>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item reveal">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-year">2019</div>
+        <div class="timeline-title">The Beginning</div>
+        <div class="timeline-desc">Urban Bites opens its doors in Wuse II, Abuja with a vision to revolutionize West African fine dining.</div>
+      </div>
+    </div>
+    <div class="timeline-item reveal" style="transition-delay: 0.15s;">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-year">2020</div>
+        <div class="timeline-title">Recognition</div>
+        <div class="timeline-desc">Named "Best New Restaurant" by leading food critics. Chef Adaeze featured in international culinary publications.</div>
+      </div>
+    </div>
+    <div class="timeline-item reveal" style="transition-delay: 0.3s;">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-year">2021</div>
+        <div class="timeline-title">Expansion</div>
+        <div class="timeline-desc">Launch of Chef's Table experience and private dining facilities. Expanded team of talented chefs.</div>
+      </div>
+    </div>
+    <div class="timeline-item reveal" style="transition-delay: 0.45s;">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-year">2022</div>
+        <div class="timeline-title">Awards & Accolades</div>
+        <div class="timeline-desc">Wins "African Culinary Excellence Award" and achieves 4.9-star rating from thousands of guests.</div>
+      </div>
+    </div>
+    <div class="timeline-item reveal" style="transition-delay: 0.6s;">
+      <div class="timeline-dot"></div>
+      <div class="timeline-content">
+        <div class="timeline-year">2024</div>
+        <div class="timeline-title">Global Recognition</div>
+        <div class="timeline-desc">Featured in international food media. Urban Bites becomes a destination for culinary enthusiasts worldwide.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">Urban<span>Bites</span></div>
+      <p class="footer-tagline">A celebration of West African cuisine elevated through the art of modern gastronomy. Located in the heart of Abuja.</p>
+      <div class="footer-social">
+        <a href="#" class="social-link">ig</a>
+        <a href="#" class="social-link">tw</a>
+        <a href="#" class="social-link">fb</a>
+        <a href="#" class="social-link">yt</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="story.html">Our Story</a></li>
+        <li><a href="menu.html">The Menu</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="experience.html#chef-table">Chef's Table</a></li>
+        <li><a href="experience.html#private-events">Private Events</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Visit Us</div>
+      <ul class="footer-links">
+        <li><a href="#">14 Aminu Kano Crescent</a></li>
+        <li><a href="#">Wuse II, Abuja</a></li>
+        <li><a href="#">FCT, Nigeria</a></li>
+        <li><a href="#" style="margin-top:16px; display:block;">+234 801 234 5678</a></li>
+        <li><a href="#">hello@urbanbites.ng</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Hours</div>
+      <ul class="footer-links">
+        <li><a href="#">Mon–Fri</a></li>
+        <li><a href="#">12 PM — 3 PM (Lunch)</a></li>
+        <li><a href="#">7 PM — 11 PM (Dinner)</a></li>
+        <li><a href="#" style="margin-top:16px; display:block;">Sat–Sun</a></li>
+        <li><a href="#">11 AM — 11 PM</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 <span>Urban Bites Abuja</span>. All rights reserved.</div>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Gift Cards</a>
+    </div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>

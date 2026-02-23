@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Urban Bites Abuja - Fine Dining</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Google+Sans:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* HERO */
+.hero {
+  height: 100vh;
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+}
+
+.hero-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 140px 60px 80px 80px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-tag {
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  opacity: 0;
+  animation: fadeUp 0.8s 0.3s ease forwards;
+}
+.hero-tag::before {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(4rem, 7vw, 7rem);
+  font-weight: 300;
+  line-height: 0.9;
+  margin-bottom: 40px;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.5s ease forwards;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+  display: block;
+}
+
+.hero-desc {
+  font-size: 0.9rem;
+  line-height: 1.8;
+  color: var(--muted);
+  max-width: 340px;
+  margin-bottom: 56px;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.7s ease forwards;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  opacity: 0;
+  animation: fadeUp 0.9s 0.9s ease forwards;
+}
+
+.hero-right {
+  position: relative;
+  overflow: hidden;
+}
+.hero-img-wrap {
+  position: absolute;
+  inset: 0;
+  clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%);
+}
+.hero-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transform: scale(1.08);
+  animation: zoomOut 8s ease forwards;
+}
+.hero-img-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(14,12,10,0.5) 0%, rgba(14,12,10,0.1) 100%);
+}
+
+/* Floating badge */
+.hero-badge {
+  position: absolute;
+  bottom: 80px;
+  left: -30px;
+  background: var(--rust);
+  padding: 24px;
+  z-index: 5;
+  width: 150px;
+  text-align: center;
+  opacity: 0;
+  animation: fadeUp 1s 1.2s ease forwards;
+}
+.hero-badge-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--cream);
+  display: block;
+}
+.hero-badge-text {
+  font-size: 0.6rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(245,239,224,0.7);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 80px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--muted);
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: fadeIn 1s 1.5s ease forwards;
+}
+.scroll-line {
+  width: 60px; height: 1px;
+  background: var(--muted);
+  position: relative;
+  overflow: hidden;
+}
+.scroll-line::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gold);
+  animation: scrollLine 2s infinite;
+}
+
+@keyframes scrollLine {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* ABOUT STRIP */
+.about-strip {
+  background: var(--green);
+  padding: 30px 80px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(201,168,76,0.15);
+  border-bottom: 1px solid rgba(201,168,76,0.15);
+}
+.strip-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.strip-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  font-weight: 300;
+  color: var(--gold);
+}
+.strip-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(245,239,224,0.6);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+.strip-divider { width: 1px; height: 40px; background: rgba(201,168,76,0.2); }
+
+/* MARQUEE */
+.marquee-section {
+  overflow: hidden;
+  background: var(--gold);
+  padding: 18px 0;
+}
+.marquee-track {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee 25s linear infinite;
+}
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 0 32px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  font-style: italic;
+  color: var(--dark);
+  font-weight: 400;
+}
+.marquee-dot { width: 6px; height: 6px; background: var(--dark); border-radius: 50%; opacity: 0.4; }
+
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+/* HOME SECTIONS */
+.home-section {
+  padding: 120px 80px;
+}
+
+.home-section-title {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.home-section-title .section-tag {
+  justify-content: center;
+}
+
+.home-cta-section {
+  text-align: center;
+  padding: 100px 80px;
+  background: var(--charcoal);
+}
+
+.home-cta-section .section-title {
+  margin-bottom: 32px;
+}
+
+.home-cta-section p {
+  font-size: 1rem;
+  color: var(--muted);
+  margin-bottom: 48px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.8;
+}
+
+.home-cta-buttons {
+  display: flex;
+  gap: 24px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follow" id="cursorFollow"></div>
+
+<!-- Ambient orbs -->
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Urban<span>Bites</span></a>
+  <ul class="nav-links">
+    <li><a href="story.html">Story</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="reservations.html">Reservations</a></li>
+  </ul>
+  <a href="reservations.html" class="nav-cta">Book a Table</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <div class="hero-tag">Abuja · Fine Dining · Est. 2019</div>
+    <h1 class="hero-title">
+      Where Taste<br>
+      <em>Becomes</em><br>
+      Art
+    </h1>
+    <p class="hero-desc">A celebration of West African cuisine reimagined through contemporary techniques and local, seasonal ingredients.</p>
+    <div class="hero-actions">
+      <a href="menu.html" class="btn-primary"><span>Explore the Menu</span></a>
+      <a href="story.html" class="btn-ghost">
+        <div class="play-icon">
+          <svg width="10" height="12" viewBox="0 0 10 12" fill="var(--cream)">
+            <path d="M0 0l10 6-10 6V0z"/>
+          </svg>
+        </div>
+        Our Story
+      </a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-wrap">
+      <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&h=900&fit=crop" alt="Fine dining dish" class="hero-img">
+      <div class="hero-img-overlay"></div>
+    </div>
+    <div class="hero-badge">
+      <span class="hero-badge-num">★ 4.9</span>
+      <span class="hero-badge-text">Award Winning<br>Restaurant</span>
+    </div>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    Scroll to discover
+  </div>
+</section>
+
+<!-- ABOUT STRIP -->
+<div class="about-strip">
+  <div class="strip-item">
+    <span class="strip-num">12+</span>
+    <span class="strip-label">Years of<br>Excellence</span>
+  </div>
+  <div class="strip-divider"></div>
+  <div class="strip-item">
+    <span class="strip-num">98%</span>
+    <span class="strip-label">Guest<br>Satisfaction</span>
+  </div>
+  <div class="strip-divider"></div>
+  <div class="strip-item">
+    <span class="strip-num">48+</span>
+    <span class="strip-label">Signature<br>Dishes</span>
+  </div>
+  <div class="strip-divider"></div>
+  <div class="strip-item">
+    <span class="strip-num">3</span>
+    <span class="strip-label">Culinary<br>Awards</span>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <span class="marquee-item"><span class="marquee-dot"></span> Jollof Reimagined</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Suya Bites</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Ofe Akwu Bisque</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Plantain Carpaccio</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Urban Egusi</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Peppersoup Consommé</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Abacha Terrine</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Jollof Reimagined</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Suya Bites</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Ofe Akwu Bisque</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Plantain Carpaccio</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Urban Egusi</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Peppersoup Consommé</span>
+    <span class="marquee-item"><span class="marquee-dot"></span> Abacha Terrine</span>
+  </div>
+</div>
+
+<!-- FEATURED SECTION -->
+<section class="home-section">
+  <div class="home-section-title reveal">
+    <div class="section-tag">Signature Dishes</div>
+    <h2 class="section-title">The Urban Bites<br>Collection</h2>
+  </div>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;">
+    <div class="menu-card reveal" style="background: var(--charcoal); overflow: hidden; position: relative; cursor: none;">
+      <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=280&fit=crop" alt="Abacha Terrine" style="width:100%; height:280px; object-fit:cover; display:block;">
+      <div style="padding: 28px; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div style="font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; font-family: 'Plus Jakarta Sans', sans-serif;">Starter</div>
+        <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--cream); margin-bottom: 10px;">Abacha Terrine</div>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.7; margin-bottom: 20px;">African salad reimagined — layered cassava flakes, ugba, palm oil gel, and garden egg caviar.</p>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--gold);">₦18,500 <span style="font-size: 0.7rem; color: var(--muted); font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 400;">per person</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card reveal" style="background: var(--charcoal); overflow: hidden; position: relative; cursor: none;">
+      <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400&h=280&fit=crop" alt="Urban Egusi" style="width:100%; height:280px; object-fit:cover; display:block;">
+      <div style="padding: 28px; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div style="font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; font-family: 'Plus Jakarta Sans', sans-serif;">Main Course</div>
+        <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--cream); margin-bottom: 10px;">Urban Egusi</div>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.7; margin-bottom: 20px;">Slow-rendered egusi soup crowned with dry-aged goat, pumpkin leaf oil, and fermented dawadawa dust.</p>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--gold);">₦34,000 <span style="font-size: 0.7rem; color: var(--muted); font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 400;">per person</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="menu-card reveal" style="background: var(--charcoal); overflow: hidden; position: relative; cursor: none;">
+      <img src="https://images.unsplash.com/photo-1488477181946-6428a0291840?w=400&h=280&fit=crop" alt="Zobo Panna Cotta" style="width:100%; height:280px; object-fit:cover; display:block;">
+      <div style="padding: 28px; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div style="font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 10px; font-family: 'Plus Jakarta Sans', sans-serif;">Dessert</div>
+        <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--cream); margin-bottom: 10px;">Zobo Panna Cotta</div>
+        <p style="font-size: 0.8rem; color: var(--muted); line-height: 1.7; margin-bottom: 20px;">Silken hibiscus-infused cream, ginger syrup sphere, and toasted zobo granita.</p>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+          <div style="font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--gold);">₦12,000 <span style="font-size: 0.7rem; color: var(--muted); font-family: 'Plus Jakarta Sans', sans-serif; font-weight: 400;">per person</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA SECTION -->
+<section class="home-cta-section">
+  <h2 class="section-title reveal">Ready to Experience<br><em>Urban Bites?</em></h2>
+  <p class="reveal">Discover our full menu, reserve your table, or learn more about our culinary philosophy and dining experiences.</p>
+  <div class="home-cta-buttons reveal">
+    <a href="menu.html" class="btn-primary"><span>View Full Menu</span></a>
+    <a href="reservations.html" class="btn-primary"><span>Make a Reservation</span></a>
+    <a href="story.html" class="btn-ghost">
+      <div class="play-icon">
+        <svg width="10" height="12" viewBox="0 0 10 12" fill="var(--cream)">
+          <path d="M0 0l10 6-10 6V0z"/>
+        </svg>
+      </div>
+      Our Story
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">Urban<span>Bites</span></div>
+      <p class="footer-tagline">A celebration of West African cuisine elevated through the art of modern gastronomy. Located in the heart of Abuja.</p>
+      <div class="footer-social">
+        <a href="#" class="social-link">ig</a>
+        <a href="#" class="social-link">tw</a>
+        <a href="#" class="social-link">fb</a>
+        <a href="#" class="social-link">yt</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="story.html">Our Story</a></li>
+        <li><a href="menu.html">The Menu</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="experience.html#chef-table">Chef's Table</a></li>
+        <li><a href="experience.html#private-events">Private Events</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Visit Us</div>
+      <ul class="footer-links">
+        <li><a href="#">14 Aminu Kano Crescent</a></li>
+        <li><a href="#">Wuse II, Abuja</a></li>
+        <li><a href="#">FCT, Nigeria</a></li>
+        <li><a href="#" style="margin-top:16px; display:block;">+234 801 234 5678</a></li>
+        <li><a href="#">hello@urbanbites.ng</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Hours</div>
+      <ul class="footer-links">
+        <li><a href="#">Mon–Fri</a></li>
+        <li><a href="#">12 PM — 3 PM (Lunch)</a></li>
+        <li><a href="#">7 PM — 11 PM (Dinner)</a></li>
+        <li><a href="#" style="margin-top:16px; display:block;">Sat–Sun</a></li>
+        <li><a href="#">11 AM — 11 PM</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 <span>Urban Bites Abuja</span>. All rights reserved.</div>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Gift Cards</a>
+    </div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+</body>
+</html>

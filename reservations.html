@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reservations - Urban Bites Abuja</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Google+Sans:wght@300;400;500&family=Plus+Jakarta+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared.css">
+<style>
+/* RESERVATION SECTION */
+.reservation-section {
+  padding: 140px 80px;
+  background: var(--dark);
+  position: relative;
+  overflow: hidden;
+}
+
+.reservation-section::before {
+  content: 'RESERVE';
+  position: absolute;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 20vw;
+  font-weight: 300;
+  color: rgba(201,168,76,0.03);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  white-space: nowrap;
+  pointer-events: none;
+  letter-spacing: 0.05em;
+}
+
+.reservation-inner {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.reservation-inner .section-title { font-size: clamp(3rem, 6vw, 5.5rem); margin-bottom: 20px; }
+.reservation-inner .section-title em { font-style: italic; color: var(--gold); }
+
+.reservation-subtitle {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin-bottom: 60px;
+  line-height: 1.8;
+}
+
+.res-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  text-align: left;
+  margin-bottom: 24px;
+}
+
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-group.full { grid-column: span 2; }
+
+.form-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.form-input {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 16px 20px;
+  color: var(--cream);
+  font-size: 0.9rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 300;
+  transition: border-color 0.3s;
+  outline: none;
+  width: 100%;
+}
+
+.form-input:focus { border-color: var(--gold); background: rgba(201,168,76,0.04); }
+.form-input::placeholder { color: var(--muted); }
+
+.form-submit {
+  width: 100%;
+  padding: 20px;
+  background: var(--gold);
+  color: var(--dark);
+  border: none;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  cursor: none;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  transition: background 0.3s;
+  margin-top: 8px;
+}
+
+.form-submit:hover { background: var(--gold-light); }
+
+/* INFO SECTION */
+.reservation-info {
+  background: var(--charcoal);
+  padding: 140px 80px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 60px;
+  margin-top: 80px;
+}
+
+.info-card {
+  text-align: center;
+}
+
+.info-icon {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.info-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem;
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 16px;
+}
+
+.info-text {
+  font-size: 0.95rem;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+.info-highlight {
+  color: var(--gold);
+  font-weight: 400;
+  display: block;
+  margin-top: 12px;
+}
+
+/* CONTACT SECTION */
+.contact-section {
+  padding: 140px 80px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 100px;
+  align-items: start;
+}
+
+.contact-left .section-tag { margin-bottom: 20px; }
+.contact-left .section-title { margin-bottom: 40px; }
+
+.contact-info {
+  list-style: none;
+  margin-bottom: 60px;
+}
+
+.contact-info-item {
+  padding: 24px 0;
+  border-top: 1px solid rgba(201,168,76,0.15);
+}
+
+.contact-info-label {
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 8px;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.contact-info-value {
+  font-size: 1rem;
+  color: var(--cream);
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.contact-info-value a {
+  color: var(--cream);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact-info-value a:hover { color: var(--gold); }
+
+.contact-right {
+  background: var(--charcoal);
+  padding: 60px;
+  border: 1px solid rgba(201,168,76,0.1);
+}
+
+.contact-right .section-title {
+  font-size: 2rem;
+  margin-bottom: 32px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.contact-form-label {
+  font-size: 0.6rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+.contact-form-input {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 16px 20px;
+  color: var(--cream);
+  font-size: 0.9rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 300;
+  transition: border-color 0.3s;
+  outline: none;
+}
+
+.contact-form-input:focus { border-color: var(--gold); background: rgba(201,168,76,0.04); }
+.contact-form-input::placeholder { color: var(--muted); }
+
+.contact-form-textarea {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(201,168,76,0.2);
+  padding: 16px 20px;
+  color: var(--cream);
+  font-size: 0.9rem;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 300;
+  transition: border-color 0.3s;
+  outline: none;
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form-textarea:focus { border-color: var(--gold); background: rgba(201,168,76,0.04); }
+.contact-form-textarea::placeholder { color: var(--muted); }
+
+.contact-form-submit {
+  padding: 16px;
+  background: var(--gold);
+  color: var(--dark);
+  border: none;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  cursor: none;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 500;
+  transition: background 0.3s;
+  margin-top: 8px;
+}
+
+.contact-form-submit:hover { background: var(--gold-light); }
+
+/* POLICIES */
+.policies-section {
+  background: var(--charcoal);
+  padding: 140px 80px;
+}
+
+.policies-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 60px;
+  margin-top: 80px;
+}
+
+.policy-card {
+  background: var(--dark);
+  padding: 40px;
+  border: 1px solid rgba(201,168,76,0.1);
+}
+
+.policy-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: var(--cream);
+  margin-bottom: 16px;
+}
+
+.policy-text {
+  font-size: 0.9rem;
+  color: var(--muted);
+  line-height: 1.8;
+}
+</style>
+</head>
+<body>
+
+<!-- Cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-follow" id="cursorFollow"></div>
+
+<!-- Ambient orbs -->
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">Urban<span>Bites</span></a>
+  <ul class="nav-links">
+    <li><a href="story.html">Story</a></li>
+    <li><a href="menu.html">Menu</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="reservations.html">Reservations</a></li>
+  </ul>
+  <a href="reservations.html" class="nav-cta">Book a Table</a>
+</nav>
+
+<!-- PAGE HEADER -->
+<div class="page-header" style="background: linear-gradient(135deg, rgba(42,61,46,0.8) 0%, rgba(14,12,10,0.8) 100%);">
+  <div class="page-header-content">
+    <div class="section-tag" style="justify-content: center;">Make a Reservation</div>
+    <h1 class="section-title">Reserve Your<br><em>Table</em></h1>
+    <p class="page-header-subtitle">Experience the best of Urban Bites. Reservations recommended. Walk-ins welcome subject to availability.</p>
+  </div>
+</div>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">Home</a> / Reservations
+</div>
+
+<!-- RESERVATION FORM SECTION -->
+<section class="reservation-section">
+  <div class="reservation-inner">
+    <div class="section-tag" style="justify-content:center;">Book Your Experience</div>
+    <h2 class="section-title reveal">Reserve Your<br><em>Table</em></h2>
+    <p class="reservation-subtitle reveal">Fill out the form below to secure your reservation. Our team will confirm your booking within 24 hours.</p>
+    <div class="res-form reveal">
+      <div class="form-group">
+        <label class="form-label">Full Name</label>
+        <input type="text" class="form-input" placeholder="Your name">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone Number</label>
+        <input type="tel" class="form-input" placeholder="+234 000 000 0000">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email Address</label>
+        <input type="email" class="form-input" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Date</label>
+        <input type="date" class="form-input">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Time</label>
+        <select class="form-input" style="appearance:none; cursor:none;">
+          <option value="" style="background:var(--dark);">Select time</option>
+          <option style="background:var(--dark);">12:00 PM — Lunch</option>
+          <option style="background:var(--dark);">1:00 PM — Lunch</option>
+          <option style="background:var(--dark);">7:00 PM — Dinner</option>
+          <option style="background:var(--dark);">8:00 PM — Dinner</option>
+          <option style="background:var(--dark);">9:00 PM — Dinner</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Number of Guests</label>
+        <select class="form-input" style="appearance:none; cursor:none;">
+          <option style="background:var(--dark);">2 Guests</option>
+          <option style="background:var(--dark);">3 Guests</option>
+          <option style="background:var(--dark);">4 Guests</option>
+          <option style="background:var(--dark);">5–8 Guests</option>
+          <option style="background:var(--dark);">Large Party (9+)</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Dining Experience</label>
+        <select class="form-input" style="appearance:none; cursor:none;">
+          <option style="background:var(--dark);">Regular Dining</option>
+          <option style="background:var(--dark);">Chef's Table</option>
+          <option style="background:var(--dark);">Tasting Menu</option>
+          <option style="background:var(--dark);">Private Dining</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Occasion</label>
+        <select class="form-input" style="appearance:none; cursor:none;">
+          <option style="background:var(--dark);">No Special Occasion</option>
+          <option style="background:var(--dark);">Birthday</option>
+          <option style="background:var(--dark);">Anniversary</option>
+          <option style="background:var(--dark);">Business Dinner</option>
+          <option style="background:var(--dark);">Proposal</option>
+          <option style="background:var(--dark);">Corporate Event</option>
+        </select>
+      </div>
+      <div class="form-group full">
+        <label class="form-label">Special Requests</label>
+        <input type="text" class="form-input" placeholder="Dietary requirements, preferred seating, surprises...">
+      </div>
+    </div>
+    <button class="form-submit reveal">Confirm Reservation</button>
+  </div>
+</section>
+
+<!-- RESERVATION INFO -->
+<section class="reservation-info">
+  <div style="text-align: center; margin-bottom: 80px;">
+    <div class="section-tag" style="justify-content: center;">Important Information</div>
+    <h2 class="section-title reveal">Before You Reserve</h2>
+  </div>
+  <div class="info-grid">
+    <div class="info-card reveal">
+      <div class="info-icon">⏰</div>
+      <h3 class="info-title">Timing</h3>
+      <p class="info-text">Lunch service runs from 12 PM to 3 PM. Dinner service runs from 7 PM to 11 PM. <span class="info-highlight">Closed Mondays</span></p>
+    </div>
+    <div class="info-card reveal" style="transition-delay: 0.15s;">
+      <div class="info-icon">👥</div>
+      <h3 class="info-title">Party Size</h3>
+      <p class="info-text">We accommodate parties from 2 to 50+ guests. For large groups, please contact us directly. <span class="info-highlight">Chef's Table: Max 6 guests</span></p>
+    </div>
+    <div class="info-card reveal" style="transition-delay: 0.3s;">
+      <div class="info-icon">📋</div>
+      <h3 class="info-title">Cancellation Policy</h3>
+      <p class="info-text">Cancellations must be made 48 hours in advance. Late cancellations may incur a charge. <span class="info-highlight">No-show: Full charge applies</span></p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section class="contact-section">
+  <div class="contact-grid">
+    <div class="contact-left reveal-left">
+      <div class="section-tag">Get in Touch</div>
+      <h2 class="section-title">Contact Urban Bites</h2>
+      <div class="gold-line"></div>
+      <ul class="contact-info">
+        <li class="contact-info-item">
+          <div class="contact-info-label">Phone</div>
+          <div class="contact-info-value"><a href="tel:+2348012345678">+234 801 234 5678</a></div>
+        </li>
+        <li class="contact-info-item">
+          <div class="contact-info-label">Email</div>
+          <div class="contact-info-value"><a href="mailto:hello@urbanbites.ng">hello@urbanbites.ng</a></div>
+        </li>
+        <li class="contact-info-item">
+          <div class="contact-info-label">Address</div>
+          <div class="contact-info-value">14 Aminu Kano Crescent<br>Wuse II, Abuja<br>FCT, Nigeria</div>
+        </li>
+        <li class="contact-info-item">
+          <div class="contact-info-label">Hours</div>
+          <div class="contact-info-value">Mon–Fri: 12 PM – 11 PM<br>Sat–Sun: 11 AM – 11 PM<br>Closed Mondays</div>
+        </li>
+      </ul>
+    </div>
+    <div class="contact-right reveal-right">
+      <h3 class="section-title" style="font-size: 1.8rem;">Send us a Message</h3>
+      <form class="contact-form">
+        <div class="contact-form-group">
+          <label class="contact-form-label">Name</label>
+          <input type="text" class="contact-form-input" placeholder="Your name">
+        </div>
+        <div class="contact-form-group">
+          <label class="contact-form-label">Email</label>
+          <input type="email" class="contact-form-input" placeholder="your@email.com">
+        </div>
+        <div class="contact-form-group">
+          <label class="contact-form-label">Subject</label>
+          <input type="text" class="contact-form-input" placeholder="How can we help?">
+        </div>
+        <div class="contact-form-group">
+          <label class="contact-form-label">Message</label>
+          <textarea class="contact-form-textarea" placeholder="Your message..."></textarea>
+        </div>
+        <button type="submit" class="contact-form-submit">Send Message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- POLICIES -->
+<section class="policies-section">
+  <div style="text-align: center; margin-bottom: 80px;">
+    <div class="section-tag" style="justify-content: center;">Policies</div>
+    <h2 class="section-title reveal">Reservation Policies</h2>
+  </div>
+  <div class="policies-grid">
+    <div class="policy-card reveal">
+      <h3 class="policy-title">Cancellation & Changes</h3>
+      <p class="policy-text">Reservations can be modified or cancelled up to 48 hours before your booking. Cancellations made within 48 hours may incur a charge equal to 50% of the estimated bill. No-shows will be charged the full estimated amount.</p>
+    </div>
+    <div class="policy-card reveal" style="transition-delay: 0.15s;">
+      <h3 class="policy-title">Dress Code</h3>
+      <p class="policy-text">Smart casual attire is required. For special experiences like Chef's Table, business casual or formal wear is recommended. We reserve the right to refuse entry for inappropriate attire.</p>
+    </div>
+    <div class="policy-card reveal" style="transition-delay: 0.3s;">
+      <h3 class="policy-title">Dining Duration</h3>
+      <p class="policy-text">Standard dining experiences are approximately 2.5 hours. Chef's Table experiences last 3.5 hours. We request that tables be vacated by closing time to accommodate our team.</p>
+    </div>
+    <div class="policy-card reveal" style="transition-delay: 0.45s;">
+      <h3 class="policy-title">Special Requests</h3>
+      <p class="policy-text">We accommodate dietary restrictions, allergies, and special requests. Please inform us at the time of booking or call us in advance to discuss your needs with our culinary team.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="footer-logo">Urban<span>Bites</span></div>
+      <p class="footer-tagline">A celebration of West African cuisine elevated through the art of modern gastronomy. Located in the heart of Abuja.</p>
+      <div class="footer-social">
+        <a href="#" class="social-link">ig</a>
+        <a href="#" class="social-link">tw</a>
+        <a href="#" class="social-link">fb</a>
+        <a href="#" class="social-link">yt</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-col-title">Navigate</div>
+      <ul class="footer-links">
+        <li><a href="story.html">Our Story</a></li>
+        <li><a href="menu.html">The Menu</a></li>
+        <li><a href="experience.html">Experience</a></li>
+        <li><a href="experience.html#chef-table">Chef's Table</a></li>
+        <li><a href="experience.html#private-events">Private Events</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Visit Us</div>
+      <ul class="footer-links">
+        <li><a href="#">14 Aminu Kano Crescent</a></li>
+        <li><a href="#">Wuse II, Abuja</a></li>
+        <li><a href="#">FCT, Nigeria</a></li>
+        <li><a href="#" style="margin-top:16px; display:block;">+234 801 234 5678</a></li>
+        <li><a href="#">hello@urbanbites.ng</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title">Hours</div>
+      <ul class="footer-links">
+        <li><a href="#">Mon–Fri</a></li>
+        <li><a href="#">12 PM — 3 PM (Lunch)</a></li>
+        <li><a href="#">7 PM — 11 PM (Dinner)</a></li>
+        <li><a href="#" style="margin-top:16px; display:block;">Sat–Sun</a></li>
+        <li><a href="#">11 AM — 11 PM</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 <span>Urban Bites Abuja</span>. All rights reserved.</div>
+    <div class="footer-legal">
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">Gift Cards</a>
+    </div>
+  </div>
+</footer>
+
+<script src="shared.js"></script>
+<script>
+// Form submit
+document.querySelector('.form-submit').addEventListener('click', (e) => {
+  const btn = e.target;
+  btn.textContent = 'Reservation Confirmed ✓';
+  btn.style.background = 'var(--green)';
+  btn.style.color = 'var(--cream)';
+  setTimeout(() => {
+    btn.textContent = 'Confirm Reservation';
+    btn.style.background = '';
+    btn.style.color = '';
+  }, 3000);
+});
+
+// Contact form submit
+document.querySelector('.contact-form').addEventListener('submit', (e) => {
+  e.preventDefault();
+  const btn = e.target.querySelector('.contact-form-submit');
+  btn.textContent = 'Message Sent ✓';
+  btn.style.background = 'var(--green)';
+  btn.style.color = 'var(--cream)';
+  setTimeout(() => {
+    btn.textContent = 'Send Message';
+    btn.style.background = '';
+    btn.style.color = '';
+    e.target.reset();
+  }, 3000);
+});
+</script>
+</body>
+</html>
